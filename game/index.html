@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Sky Courier — a tiny HTML5 flight game: dodge the skyline, deliver parcels, watch your fuel.">
+<title>Sky Courier</title>
+<style>
+  :root { color-scheme: dark; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    background: #0b1026 radial-gradient(1200px 700px at 50% 30%, #1b2a52 0%, #0b1026 60%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: #eef4ff; overflow: hidden;
+  }
+  #wrap { width: min(98vw, 1060px); }
+  #frame {
+    border: 1px solid rgba(140, 180, 255, .35);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,.55), 0 0 0 6px rgba(20,34,72,.35);
+    background: #79b5e8;
+  }
+  canvas { display: block; width: 100%; height: auto; }
+  #bar {
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    padding: 10px 4px 0; font-size: 13px; color: #a9c2ee;
+  }
+  #bar b { color: #eef4ff; }
+  /* staged screenshot mode (?shot=...): game fills the viewport, no page chrome */
+  body.shot { background: #79b5e8; }
+  body.shot #bar { display: none; }
+  body.shot #wrap { width: 100vw; }
+  body.shot #frame { border: 0; border-radius: 0; box-shadow: none; }
+  kbd {
+    background: #1c2a4d; border: 1px solid #38507f; border-bottom-width: 2px;
+    border-radius: 5px; padding: 0 5px; font: 11px/1.6 ui-monospace, monospace; color: #dbe8ff;
+  }
+</style>
+</head>
+<body>
+  <div id="wrap">
+    <div id="frame"><canvas id="game" width="960" height="540"></canvas></div>
+    <div id="bar">
+      <div><b>Sky Courier</b> — deliver parcels across a stormy skyline.</div>
+      <div><kbd>&uarr;</kbd><kbd>&darr;</kbd> / <kbd>W</kbd><kbd>S</kbd> climb &amp; dive &middot; mouse steers &middot; <kbd>Space</kbd> boost &middot; <kbd>Enter</kbd> start &middot; <kbd>R</kbd> restart</div>
+    </div>
+  </div>
+  <script type="module" src="src/game.js"></script>
+</body>
+</html>
